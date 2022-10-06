@@ -132,6 +132,14 @@ public class Block implements Serializable{
         this.luck = luck;
     }
 
+    public void setTransactionLedger(ArrayList<Transaction> transactionLedger) {
+        this.transactionLedger = transactionLedger;
+    }
+
+    public ArrayList<Transaction> getTransactionLedger() {
+        return transactionLedger;
+    }
+
     @Override
     public String toString(){
 

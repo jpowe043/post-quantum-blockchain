@@ -4,6 +4,10 @@ import main.Models.*;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import main.Threads.MiningThread;
+import main.Threads.PeerClient;
+import main.Threads.PeerServer;
+import main.Threads.UI;
 
 import javax.xml.transform.Result;
 import java.security.*;
