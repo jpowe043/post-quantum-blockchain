@@ -1,15 +1,17 @@
 package main;
 
-import main.Models.*;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
+import main.Models.Block;
+import main.Models.Transaction;
+import main.Models.Wallet;
+import main.ServiceData.BlockchainData;
+import main.ServiceData.WalletData;
 import main.Threads.MiningThread;
 import main.Threads.PeerClient;
 import main.Threads.PeerServer;
 import main.Threads.UI;
 
-import javax.xml.transform.Result;
 import java.security.*;
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -93,7 +95,7 @@ public class Coin extends Application{
 
                 //helper class
                 Signature signing = Signature.getInstance("SHA256withDSA");
-                signing.initSign(WalletData.getInstance().getWallet.getPrivate());
+                signing.initSign(WalletData.getInstance().getWallet().getPrivateKey());
                 signing.update(firstBlock.toString().getBytes());
 
                 firstBlock.setCurrHash(signing.sign());
@@ -112,7 +114,7 @@ public class Coin extends Application{
                 preparedStatement.executeUpdate();
 
                 Signature transactionSignature = Signature.getInstance("SHA256withDSA");
-                initBlockRewardTransaction = new Transaction(WalletData.getInstance().getWallet, WalletData.getInstance().getWallet().getPublicKey().getEncoded(), 100, 1, transactionSignature);
+                initBlockRewardTransaction = new Transaction(WalletData.getInstance().getWallet(), WalletData.getInstance().getWallet().getPublicKey().getEncoded(), 100, 1, transactionSignature);
 
             }
 

@@ -19,6 +19,10 @@ public class Wallet implements Serializable{
         this.keyPair = keyPairGen.generateKeyPair();
     }
 
+    public Wallet(PublicKey publicKey, PrivateKey privateKey){
+        keyPair = new KeyPair(publicKey,privateKey);
+    }
+
     public KeyPair getKeyPair() {
         return keyPair;
     }

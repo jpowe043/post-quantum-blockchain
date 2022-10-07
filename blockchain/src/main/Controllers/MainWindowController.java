@@ -1,17 +1,16 @@
 package main.Controllers;
 
-import main.Models.Transaction;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import main.Models.Transaction;
+import main.ServiceData.BlockchainData;
+import main.ServiceData.WalletData;
 
-import javax.swing.text.html.Option;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Base64;
 import java.util.Optional;
 
@@ -52,7 +51,7 @@ public class MainWindowController {
         value.setCellValueFactory( new PropertyValueFactory<>("value"));
         signature.setCellValueFactory( new PropertyValueFactory<>("signatureFX"));
         timeStamp.setCellValueFactory( new PropertyValueFactory<>("timeStamp"));
-        coins.setText(BlockChainData.getInstance().getWalletBallanceFx());
+        coins.setText(BlockchainData.getInstance().getWalletBalanceFX());
         publicKey.setText(encoder.encodeToString(WalletData.getInstance().getWallet().getPublicKey().getEncoded()));
         tableView.setItems(BlockchainData.getInstance().getTransactionLedgerFX());
         tableView.getSelectionModel().select(0);

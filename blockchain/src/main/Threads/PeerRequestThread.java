@@ -1,6 +1,7 @@
 package main.Threads;
 
 import main.Models.Block;
+import main.ServiceData.BlockchainData;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

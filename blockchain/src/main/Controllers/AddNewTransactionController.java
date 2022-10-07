@@ -1,10 +1,10 @@
 package main.Controllers;
 
-import com.sun.javafx.image.impl.General;
-import main.Models.Transaction;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import org.w3c.dom.Text;
+import main.Models.Transaction;
+import main.ServiceData.BlockchainData;
+import main.ServiceData.WalletData;
 
 import java.security.GeneralSecurityException;
 import java.security.Signature;
@@ -22,7 +22,7 @@ public class AddNewTransactionController {
     public void createNewTransaction() throws GeneralSecurityException{
         Base64.Decoder decoder = Base64.getDecoder();
         Signature signing = Signature.getInstance("SHA256withDSA");
-        Integer ledgerId = BlockchainData.getInstance().getTransactionLedgerFx().get(0).getLedgerId();
+        Integer ledgerId = BlockchainData.getInstance().getTransactionLedgerFX().get(0).getLedgerId();
         byte[] sendB = decoder.decode(toAddress.getText());
         Transaction transaction= new Transaction(WalletData.getInstance().getWallet(),sendB ,Integer.parseInt(value.getText()),ledgerId,signing);
         BlockchainData.getInstance().addTransaction(transaction,false);

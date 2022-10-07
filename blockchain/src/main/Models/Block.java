@@ -151,5 +151,8 @@ public class Block implements Serializable{
 
     }
 
+    public void setMinedBy(byte[] minedBy) {
+        this.minedBy = minedBy;
+    }
 }
 
