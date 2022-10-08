@@ -28,7 +28,7 @@ public class Block implements Serializable{
 
     private ArrayList<Transaction> transactionLedger = new ArrayList<Transaction>();
 
-    //This constructor is used when retieving a block from the database
+    //This constructor is used when retrieving a block from the database
     public Block(byte[] prevHash, byte[] currHash, String timeStamp, byte[] minedBy, Integer ledgerId,
         Integer miningPoints, Double luck, ArrayList<Transaction> transactionLedger){
 
@@ -55,6 +55,7 @@ public class Block implements Serializable{
 
     //For the first block in the blockchain (head of blockchain)
     public Block(){
+        System.out.println("FIRST BLOCK!!!");
         prevHash = new byte[]{0};
     }
 

@@ -242,7 +242,7 @@ public class BlockchainData {
 
     }
 
-    //************ DONT FULLY UNDERSTAND ********************
+    //************ DON'T FULLY UNDERSTAND ********************
     private void finalizeBlock(Wallet minersWallet) throws GeneralSecurityException, SQLException{
 
         //Create new block and pass it to latestBlock

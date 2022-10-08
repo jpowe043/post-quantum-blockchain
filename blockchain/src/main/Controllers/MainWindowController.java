@@ -62,7 +62,7 @@ public class MainWindowController {
         Dialog<ButtonType> newTransactionController = new Dialog<>();
         newTransactionController.initOwner(borderPane.getScene().getWindow());
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/View/AddNewTransaction.fxml"));
+        fxmlLoader.setLocation(getClass().getClassLoader().getResource("/home/polyphery/Desktop/Fall2022/Honours/post-quantum-blockchain/blockchain/src/main/View/AddNewTransaction.fxml"));
 
         try{
             newTransactionController.getDialogPane().setContent(fxmlLoader.load());

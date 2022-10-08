@@ -13,8 +13,9 @@ public class UI extends Application{
     public void start(Stage stage){
         Parent root = null;
         try{
-            root = FXMLLoader.load(getClass().getResource("/View/MainWindow.fxml"));
-        }catch(IOException e){
+            System.out.println(getClass().getResource("../../"));
+            root = FXMLLoader.load(getClass().getResource("../../resources/MainWindow.fxml"));
+        }catch(NullPointerException | IOException e){
             e.printStackTrace();
         }
         stage.setTitle("Coin");

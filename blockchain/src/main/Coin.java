@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 public class Coin extends Application{
     public static void main(String[] args) throws Exception {
-//        launch(args);
+            launch(args);
     }
 
     @Override
@@ -36,6 +36,7 @@ public class Coin extends Application{
     @Override
     public void init(){
         try{
+            System.out.println("Loading Wallet...");
             //Creates your wallet if there isn't one already and generates a KeyPair  ****
 
             //We will create it in a separate db for better security and ease of portability
@@ -47,12 +48,13 @@ public class Coin extends Application{
             walletStatement.executeUpdate("CREATE TABLE IF NOT EXISTS WALLET ( " +
                                                 "PRIVATE_KEY BLOB NOT NULL UNIQUE, " +
                                                 "PUBLIC_KEY BLOB NOT NULL UNIQUE, " +
-                                                "PRIMARY KEY (PRIVATE_KEY, PUBLIC_KEY)");
+                                                "PRIMARY KEY (PRIVATE_KEY, PUBLIC_KEY))");
 
-            ResultSet resultSet = walletStatement.executeQuery(" SELECT * FROM WALLET");
+            ResultSet resultSet = walletStatement.executeQuery("SELECT * FROM WALLET");
 
             //Checks if the ruleSet is at the next (currently empty) position, so it can create a new wallet entry
             if(!resultSet.next()){
+                System.out.println("Next Wallet");
                 Wallet newWallet = new Wallet();
                 byte[] pubBlob = newWallet.getPublicKey().getEncoded();
                 byte[] prvBlob = newWallet.getPrivateKey().getEncoded();
@@ -69,6 +71,7 @@ public class Coin extends Application{
             walletConnection.close();
             WalletData.getInstance().loadWallet();
 
+            System.out.println("Loading Blockchain...");
             Connection blockchainConnection = DriverManager.getConnection("jdbc:sqlite:/home/polyphery/Desktop/Fall2022/Honours/post-quantum-blockchain/blockchain/db/blockchain.db");
             Statement blockchainStatement = blockchainConnection.createStatement();
 
@@ -89,6 +92,8 @@ public class Coin extends Application{
 
             //Check if blockchain entry exists and if not, then creates one
             if(!resultSetBlockchain.next()){
+                System.out.println("Next Blockchain");
+
                 Block firstBlock = new Block();
                 firstBlock.setMinedBy(WalletData.getInstance().getWallet().getPublicKey().getEncoded());
                 firstBlock.setTimeStamp(LocalDateTime.now().toString());
@@ -124,7 +129,7 @@ public class Coin extends Application{
             blockchainStatement.executeUpdate("CREATE TABLE IF NOT EXISTS TRANSACTIONS ( " +
                     " ID INTEGER NOT NULL UNIQUE, " +
                     " \"FROM\" BLOCK, " +
-                    "\"TO\" BLOB, " +
+                    " \"TO\" BLOB, " +
                     "LEDGER_ID INTEGER, " +
                     "VALUE INTEGER, " +
                     "SIGNATURE BLOB UNIQUE, " +
