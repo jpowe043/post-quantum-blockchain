@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controllers.AddNewTransactionController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,7 +22,7 @@
    <bottom>
       <AnchorPane prefHeight="68.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#close" text="Close" />
+            <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" text="Close" />
             <Button layoutX="436.0" layoutY="22.0" mnemonicParsing="false" text="Confirm Transaction" />
          </children>
       </AnchorPane>

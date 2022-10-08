@@ -41,7 +41,7 @@ public class MainWindowController {
     private TextField coins;
 
     @FXML
-    private TextArea publicKey;
+    private TextField publicKey;
 
     public void initialize(){
         //Gets all the values from the ui, if not in the ui it gets it from elsewhere in the code
